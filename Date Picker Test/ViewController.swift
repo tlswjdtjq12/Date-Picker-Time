@@ -36,9 +36,28 @@ class ViewController: UIViewController {
         
         
         if currentTimeLabel.text == timeLabel.text {
-            view.backgroundColor = UIColor.red
+            let myAlert = UIAlertController(title: "알림", message: "설정된 시간이 되었습니다!!", preferredStyle: .actionSheet)
+            
+            
+            let okAction = UIAlertAction(title: "종료", style: .default) { (action: UIAlertAction) -> Void in
+                self.view.backgroundColor = UIColor.red
+                
+                
+                
+            }
+            
+            //후행 클로저
+            let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: { (action: UIAlertAction) -> Void in
+                self.view.backgroundColor = UIColor.green
+            })
+            let testAction = UIAlertAction(title: "테스트", style: .default, handler: nil)
+            
+            myAlert.addAction(okAction)
+            myAlert.addAction(cancelAction)
+            myAlert.addAction(testAction)
+            
+            present(myAlert, animated: true, completion: nil)
         }
-
     }
     
     
